@@ -1,0 +1,36 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <img src="<%= "/user_images/#{@user.user_image_name}" %>">
+      <%= render "relationships/follow_button", user: @user %>
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+      フォロー中<%= @user.followings.count %>人
+      フォロワー<%= @user.followers.count %>人
+      <% if @user.id == @current_user.id %>
+        <p><%= link_to("編集", "/users/#{@user.id}/edit") %></p>
+      <% end %>
+    </div>
+
+    <ul class="user-tabs">
+      <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+      <li><%= link_to("フォロー", "/users/#{@user.id}/follows") %></li>
+      <li class="active"><%= link_to("フォロワー", "/users/#{@user.id}/followers") %></li>
+    </ul>
+
+    <% @followers.each do |follower| %>
+      <div class="posts-index-item">
+        <div class="post-left">
+          <img src="<%= "/user_images/#{follower.user_image_name}" %>">
+        </div>
+        <div class="post-right">
+          <div class="post-user-name">
+            <%= link_to(follower.name, "/users/#{follower.id}") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

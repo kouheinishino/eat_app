@@ -1,0 +1,26 @@
+<div class="main posts-index">
+  <div class="container">
+    <%= form_tag posts_index_path, :method => 'get' do %>
+      <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "検索", :name => nil %>
+      </p>
+    <% end %>
+    <% @posts.each do |post| %>
+      <div class="posts-index-item">
+        <div class="post-left">
+          <img src="<%= "/user_images/#{post.user.user_image_name}" %>">
+        </div>
+        <div class="post-right">
+          <div class="post-user-name">
+            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+          </div>
+          <div class="post-image-size">
+            <img src= "<%= "/post_images/#{post.image_name}" %>">
+          </div>
+          <%= link_to(post.description, "/posts/#{post.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
