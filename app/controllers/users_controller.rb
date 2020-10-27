@@ -93,4 +93,8 @@ class UsersController < ApplicationController
       redirect_to("/posts/index")
     end
   end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :user_image_name)
+  end
 end
