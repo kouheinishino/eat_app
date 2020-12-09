@@ -23,6 +23,9 @@ class PostsController < ApplicationController
     @post.user_id = @current_user.id
     if @post.save
       if params[:image]
+        # S3にuploadする処理に修正する。upload先のurlを取得
+        # image_url = S3Uploader.upload(file)
+        # @post.update(image_name: image_url )
         File.binwrite("public/post_images/#{@post.id}.jpg", params[:image].read)
         @post.update(image_name: "#{@post.id}.jpg" )
       end

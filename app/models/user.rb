@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  mount_uploader :user_image_name, UserImageNameUploader
+  #mount_uploader :user_image_name, UserImageNameUploader
 
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
