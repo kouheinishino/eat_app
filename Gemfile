@@ -70,4 +70,4 @@ end
 
 gem "aws-sdk-s3", require: false
 gem 'fog'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
